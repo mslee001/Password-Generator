@@ -15,8 +15,8 @@ generateBtn.addEventListener("click", writePassword);
 
 
 function generatePassword(){
-    //blank password that will receive characters as function works
-    let password = '';
+  //blank password that will receive characters as function goes thru its process
+  let password = '';
 
   //array to save all user input
   var passOptions = [];
@@ -47,7 +47,7 @@ function generatePassword(){
   if (passOptions[1] == false && passOptions[2] == false && passOptions[3] == false && passOptions[4] == false){
   alert("You much choose at least one option. Please try again.");
   } else {
-    alert("This is what will be included in your password:" + "\n \n" + "Lowercase: " + passLow + "\n" + "Uppercase: " + passUp + "\n" + "Special characters: " + passSpec + "\n" + "Numbers: " + passNum);
+    alert("This is what will be included in your password:" + "\n \n" + "Password Length: " + passLength + "\n" + "Lowercase: " + passLow + "\n" + "Uppercase: " + passUp + "\n" + "Special characters: " + passSpec + "\n" + "Numbers: " + passNum);
   }
 
   //array of functions
@@ -105,96 +105,65 @@ function generatePassword(){
   //if statements for the various user input options
   if (passOptions[1] == true && passOptions[2] == true && passOptions[3] == true && passOptions[4] == true){
     for (i = 0; i < passOptions[0]; i++){
-      // functions[randomChars(functions.length)]();
       password = password.toString() + functions[randomChars(functions.length)]().toString();
-        console.log(password);
     }
   } else if (passOptions[1] == true && passOptions[2] == true && passOptions[3] == true && passOptions[4] == false){
       for (i = 0; i < passOptions[0]; i++){
-        // functions[randomChars(functions.length-1)]();
         password = password.toString() + functions[randomChars(functions.length-1)]().toString();
-        console.log(password);
     }
   } else if (passOptions[1] == true && passOptions[2] == true && passOptions[3] == false && passOptions[4] == false){
       for (i = 0; i < passOptions[0]; i++){
-        // functions[randomChars(functions.length-2)]();
         password = password.toString() + functions[randomChars(functions.length-2)]().toString();
-        console.log(password);
     }
   } else if (passOptions[1] == true && passOptions[2] == false && passOptions[3] == false && passOptions[4] == false){
       for (i = 0; i < passOptions[0]; i++){
-        // functions[0]();
         password = password.toString() + functions[0]().toString();
-        console.log(password);
     }
   } else if (passOptions[1] == false && passOptions[2] == true && passOptions[3] == true && passOptions[4] == true){
       for (i = 0; i < passOptions[0]; i++){
-        // functions[randomizeFunction3(1, 2, 3)]();
         password = password.toString() + functions[randomizeFunction3(1, 2, 3)]().toString();
-        console.log(password);
     }
   } else if (passOptions[1] == true && passOptions[2] == false && passOptions[3] == true && passOptions[4] == true){
       for (i = 0; i < passOptions[0]; i++){
-        // functions[randomizeFunction3(0, 2, 3)]();
         password = password.toString() + functions[randomizeFunction3(0, 2, 3)]().toString();
-        console.log(password);
   }
   } else if (passOptions[1] == true && passOptions[2] == true && passOptions[3] == false && passOptions[4] == true){
       for (i = 0; i < passOptions[0]; i++){
-        // functions[randomizeFunction3(0, 1, 3)]();
         password = password.toString() + functions[randomizeFunction3(0, 1, 3)]().toString();
-        console.log(password);
   }
   } else if (passOptions[1] == false && passOptions[2] == false && passOptions[3] == true && passOptions[4] == true){
       for (i = 0; i < passOptions[0]; i++){
-        // functions[randomizeFunction2(2, 3)]();
         password = password.toString() + functions[randomizeFunction2(2, 3)]().toString();
-        console.log(password);
     }
   } else if (passOptions[1] == false && passOptions[2] == false && passOptions[3] == false && passOptions[4] == true){
       for (i = 0; i < passOptions[0]; i++){
-      //  functions[3]();
         password = password.toString() + functions[3]().toString();
-        console.log(password);
   }
   } else if (passOptions[1] == false && passOptions[2] == true && passOptions[3] == false && passOptions[4] == true){
       for (i = 0; i < passOptions[0]; i++){
-        // functions[randomizeFunction2(1, 3)]();
         password = password.toString() + functions[randomizeFunction2(1, 3)]().toString();
-        console.log(password);
   }
   } else if (passOptions[1] == true && passOptions[2] == false && passOptions[3] == true && passOptions[4] == false){
       for (i = 0; i < passOptions[0]; i++){
-        // functions[randomizeFunction2(0, 2)]();
         password = password.toString() + functions[randomizeFunction2(0, 2)]().toString();
-        console.log(password);
   }
   } else if (passOptions[1] == false && passOptions[2] == true && passOptions[3] == false && passOptions[4] == false){
       for (i = 0; i < passOptions[0]; i++){
-        // functions[1]();
         password = password.toString() + functions[1]().toString();
-        console.log(password);
   }
   } else if (passOptions[1] == false && passOptions[2] == false && passOptions[3] == true && passOptions[4] == false){
       for (i = 0; i < passOptions[0]; i++){
-        // functions[2]();
         password = password.toString() + functions[2]().toString();
-        console.log(password);
   }
   } else if (passOptions[1] == true && passOptions[2] == false && passOptions[3] == false && passOptions[4] == true){
       for (i = 0; i < passOptions[0]; i++){
-        // functions[randomizeFunction2(0, 3)]();
         password = password.toString() + functions[randomizeFunction2(0, 3)].toString();
-        console.log(password);
   }
   } else if (passOptions[1] == false && passOptions[2] == true && passOptions[3] == true && passOptions[4] == false){
       for (i = 0; i < passOptions[0]; i++){
-        // functions[randomizeFunction2(1, 2)]();
         password = password.toString() + functions[randomizeFunction2(1, 2)]().toString();
-        console.log(password);
   }
-  } return password;
+  }
+  console.log(password) 
+  return password;
 }
-
-
-// var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
