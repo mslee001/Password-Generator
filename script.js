@@ -7,163 +7,83 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-
 function generatePassword(){
   //blank password that will receive characters as function goes thru its process
   let password = '';
 
-  //array to save all user input
-  var passOptions = [];
-
   //ask user how long they want their password
   var passLength = prompt("How many characters should your password be?");
     console.log(passLength);
+    //validate that user input is between 8-128 characters
     while (passLength < 8 || passLength > 128) {
       var passLength = prompt("Please enter a number between 8-128");
       console.log(passLength);
     }
-  //add the variable value to passOptions array
-  passOptions.push(passLength);
 
-  //user prompts to get input on what characters their password should include. Saving each input to the array PassOptions.
+  //user prompts to get input on what characters their password should include
   var passLow = confirm("Do you wish to include lower case characters?");
-  passOptions.push(passLow);
-
   var passUp = confirm("Do you wish to include upper case characters?");
-  passOptions.push(passUp);
-
   var passSpec = confirm("Do you wish to include special characters?");
-  passOptions.push(passSpec);
-
   var passNum = confirm("Do you wish to include numerical characters?");
-  passOptions.push(passNum);
 
-  if (passOptions[1] == false && passOptions[2] == false && passOptions[3] == false && passOptions[4] == false){
+  //validation that user must choose at least one option to proceed
+  if (passLow == false && passUp == false && passSpec == false && passNum == false){
   alert("You much choose at least one option. Please try again.");
   } else {
+    //validation of the chosen options
     alert("This is what will be included in your password:" + "\n \n" + "Password Length: " + passLength + "\n" + "Lowercase: " + passLow + "\n" + "Uppercase: " + passUp + "\n" + "Special characters: " + passSpec + "\n" + "Numbers: " + passNum);
   }
-
-  //array of functions
+  //functions stored in an array to access later
   var functions = [
 
     //function to randomize lower case characters
     function randomizeLow(){
     var chars = ["a","b","c","d","e","f","g","h","i","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-    var charLow = chars[Math.floor(Math.random() * chars.length)];
-    console.log(charLow);
-    return charLow
+    return chars[Math.floor(Math.random() * chars.length)];
     },
 
     //function to randomize upper case characters
     function randomizeUp(){
     var chars = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-    var charUp = chars[Math.floor(Math.random() * chars.length)];
-    console.log(charUp);
-    return charUp;
+    return chars[Math.floor(Math.random() * chars.length)];
     },
     
     //function to randomize special characters
     function randomizeSpe(){
     var chars = ["!","#","$","%","&","'","(",")","*","+",",","-",".","/",":",";","<","=",">","?","@","[","]","^","_","`","{","|","}","~"];
-    var charSpe = chars[Math.floor(Math.random() * chars.length)];
-    console.log(charSpe);
-    return charSpe;
+    return chars[Math.floor(Math.random() * chars.length)];
     },
     
     //function to randomize numbers 0-9
     function randomizeNum(){
-    var charNum = Math.floor(Math.random() * 10);
-    console.log(charNum);
-    return charNum;
+    return Math.floor(Math.random() * 10);
     }
   ];
-
-  //function to randomize entire array of functions
-  function randomChars(n){
-    return Math.floor(Math.random() * n);
-  }
-
-  //function to randomize two selected password options
-  function randomizeFunction2(y, z){
-    var chars = [y, z]
-    return chars[Math.floor(Math.random() * chars.length)];
-  }
-
-  //function to randomize three selected password options
-  function randomizeFunction3(x, y, z){
-    var chars = [x, y, z]
-    return chars[Math.floor(Math.random() * chars.length)];
+  //the function to randomize array of functions based on user selections. 
+  function randomChars(){
+    var randFunctions = [];
+    //If statements to push the corresponding function index into array.
+    if (passLow) {
+      randFunctions.push("0");
+    } if (passUp) {
+      randFunctions.push("1");
+    } if (passSpec) {
+      randFunctions.push("2");
+    } if (passNum) {
+      randFunctions.push("3");
+    }
+    return randFunctions[Math.floor(Math.random() * randFunctions.length)];
   }
 
-  //if statements for the various user input options
-  if (passOptions[1] == true && passOptions[2] == true && passOptions[3] == true && passOptions[4] == true){
-    for (i = 0; i < passOptions[0]; i++){
-      password = password.toString() + functions[randomChars(functions.length)]().toString();
-    }
-  } else if (passOptions[1] == true && passOptions[2] == true && passOptions[3] == true && passOptions[4] == false){
-      for (i = 0; i < passOptions[0]; i++){
-        password = password.toString() + functions[randomChars(functions.length-1)]().toString();
-    }
-  } else if (passOptions[1] == true && passOptions[2] == true && passOptions[3] == false && passOptions[4] == false){
-      for (i = 0; i < passOptions[0]; i++){
-        password = password.toString() + functions[randomChars(functions.length-2)]().toString();
-    }
-  } else if (passOptions[1] == true && passOptions[2] == false && passOptions[3] == false && passOptions[4] == false){
-      for (i = 0; i < passOptions[0]; i++){
-        password = password.toString() + functions[0]().toString();
-    }
-  } else if (passOptions[1] == false && passOptions[2] == true && passOptions[3] == true && passOptions[4] == true){
-      for (i = 0; i < passOptions[0]; i++){
-        password = password.toString() + functions[randomizeFunction3(1, 2, 3)]().toString();
-    }
-  } else if (passOptions[1] == true && passOptions[2] == false && passOptions[3] == true && passOptions[4] == true){
-      for (i = 0; i < passOptions[0]; i++){
-        password = password.toString() + functions[randomizeFunction3(0, 2, 3)]().toString();
-  }
-  } else if (passOptions[1] == true && passOptions[2] == true && passOptions[3] == false && passOptions[4] == true){
-      for (i = 0; i < passOptions[0]; i++){
-        password = password.toString() + functions[randomizeFunction3(0, 1, 3)]().toString();
-  }
-  } else if (passOptions[1] == false && passOptions[2] == false && passOptions[3] == true && passOptions[4] == true){
-      for (i = 0; i < passOptions[0]; i++){
-        password = password.toString() + functions[randomizeFunction2(2, 3)]().toString();
-    }
-  } else if (passOptions[1] == false && passOptions[2] == false && passOptions[3] == false && passOptions[4] == true){
-      for (i = 0; i < passOptions[0]; i++){
-        password = password.toString() + functions[3]().toString();
-  }
-  } else if (passOptions[1] == false && passOptions[2] == true && passOptions[3] == false && passOptions[4] == true){
-      for (i = 0; i < passOptions[0]; i++){
-        password = password.toString() + functions[randomizeFunction2(1, 3)]().toString();
-  }
-  } else if (passOptions[1] == true && passOptions[2] == false && passOptions[3] == true && passOptions[4] == false){
-      for (i = 0; i < passOptions[0]; i++){
-        password = password.toString() + functions[randomizeFunction2(0, 2)]().toString();
-  }
-  } else if (passOptions[1] == false && passOptions[2] == true && passOptions[3] == false && passOptions[4] == false){
-      for (i = 0; i < passOptions[0]; i++){
-        password = password.toString() + functions[1]().toString();
-  }
-  } else if (passOptions[1] == false && passOptions[2] == false && passOptions[3] == true && passOptions[4] == false){
-      for (i = 0; i < passOptions[0]; i++){
-        password = password.toString() + functions[2]().toString();
-  }
-  } else if (passOptions[1] == true && passOptions[2] == false && passOptions[3] == false && passOptions[4] == true){
-      for (i = 0; i < passOptions[0]; i++){
-        password = password.toString() + functions[randomizeFunction2(0, 3)].toString();
-  }
-  } else if (passOptions[1] == false && passOptions[2] == true && passOptions[3] == true && passOptions[4] == false){
-      for (i = 0; i < passOptions[0]; i++){
-        password = password.toString() + functions[randomizeFunction2(1, 2)]().toString();
-  }
-  }
-  console.log(password) 
+//loop to go through the process each time for the length of the password
+for (i = 0; i < passLength; i++) {
+  password = password.toString() + functions[randomChars()]().toString();
+}
+//returns the generated password
   return password;
 }
