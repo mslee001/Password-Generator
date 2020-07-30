@@ -14,3 +14,5 @@
 
 <p>Link to deployed app: https://mslee001.github.io/bootcamp-week3-hw/</p>
 
+<p>Screenshot of password generator</p>
+<img src="password_generator.PNG" alt="Password Generator screenshot"/>
