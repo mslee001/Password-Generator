@@ -9,3 +9,6 @@ Password Generator to generate random passwords based on the follow user input:
 -The option to include numbers
 
 The user must pick at least option for the generator to work.
+
+Link to deployed app: https://mslee001.github.io/bootcamp-week3-hw/
+
